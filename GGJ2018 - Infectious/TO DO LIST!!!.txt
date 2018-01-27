@@ -1,0 +1,13 @@
+Must Do
+=============================
+UI (points, captured people, goal, time)
+Main Menu (start, credits, exit)
+In Game Menu (paused, resume, exit)
+Victory Screen
+Loss screen
+
+
+Want to do
+=============================
+Options Screen (sfx, volume, controls?)
+All the particles
