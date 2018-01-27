@@ -6,7 +6,8 @@ public class PersonAI : MonoBehaviour {
     public float movementSpeed = 0.5f,
         infectedSpeed = 1.5f,
         minWaitTime = 2000,
-        maxWaitTime = 10000;
+        maxWaitTime = 10000,
+        looseInfectionRange = 4;
     public Vector2 moveSize = new Vector2(3, 3);
     public bool infected = false;
 
@@ -48,6 +49,11 @@ public class PersonAI : MonoBehaviour {
         }
         else
         {
+            if(Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) > looseInfectionRange)
+            {
+                StopInfection();
+                return;
+            }
             if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position + targetPosition) < .3f)
             {
                 targetPosition = new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
