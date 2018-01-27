@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector2 moveDirection;
 
+    public static GameObject instance;
+
     Rigidbody2D rb;
     // Use this for initialization
 	void Start () {
+        instance = gameObject;
         rb = GetComponent<Rigidbody2D>();
 	}
 	

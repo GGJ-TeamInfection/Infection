@@ -25,7 +25,11 @@ public class InfectPerson : MonoBehaviour {
 
     public void Infect(GameObject target)
     {
-        target.GetComponent<SpriteRenderer>().color = Color.red;
+        PersonAI targetAI;
+        if(targetAI = target.GetComponent<PersonAI>())
+        {
+            targetAI.GetInfected();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
