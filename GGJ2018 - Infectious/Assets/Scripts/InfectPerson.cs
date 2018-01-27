@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfectPerson : MonoBehaviour {
 
-    GameObject[] objectsInRange;
+    public List<GameObject> objectsInRange = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -15,12 +15,36 @@ public class InfectPerson : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Fire1"))
         {
-
+            print("Clicked");
+            foreach(GameObject target in objectsInRange)
+            {
+                Infect(target);
+            }
         }
 	}
 
+    public void Infect(GameObject target)
+    {
+        target.GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-    
+        objectsInRange.Add(collision.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        objectsInRange.Remove(collision.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        objectsInRange.Add(collision.gameObject);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        objectsInRange.Remove(collision.gameObject);
     }
 }
