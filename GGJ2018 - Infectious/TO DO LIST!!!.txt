@@ -5,6 +5,14 @@ Main Menu (start, credits, exit)
 In Game Menu (paused, resume, exit)
 Victory Screen
 Loss screen
+Art added in
+Player art
+"Person" art (bad guys/targets)
+Background art (the "world", ground, animals, trash, trash cans, street lights, etc)
+Main Menu Art
+In game menu art
+Victory art
+Loss art
 
 
 Want to do
