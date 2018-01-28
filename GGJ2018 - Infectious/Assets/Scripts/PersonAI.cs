@@ -10,6 +10,7 @@ public class PersonAI : MonoBehaviour {
         looseInfectionRange = 4;
     public Vector2 moveSize = new Vector2(3, 3);
     public bool infected = false;
+	public float resistance = 3f;
 
     public float curTime = 0,
         targetTime = 0;
@@ -64,8 +65,15 @@ public class PersonAI : MonoBehaviour {
     
     public void GetInfected()
     {
-        infected = true;
-        targetPosition = new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
+		resistance = (resistance > 0f ? resistance - 1f : 0f);
+
+		infected = resistance == 0f;
+		if (infected) {
+			targetPosition = new Vector3 (Random.Range (-moveSize.x, moveSize.x), Random.Range (-moveSize.y, moveSize.y), 0);
+			GetComponent<SpriteRenderer> ().color = Color.red;
+		} else {
+			GetComponent<SpriteRenderer> ().color = Color.yellow;
+		}
     }
 
     public void StopInfection()
