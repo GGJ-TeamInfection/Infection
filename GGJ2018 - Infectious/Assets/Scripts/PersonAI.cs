@@ -111,6 +111,7 @@ public class PersonAI : MonoBehaviour {
             targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
             curTime = 0;
             targetTime = Random.Range(minWaitTime, maxWaitTime);
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
     }
 }
