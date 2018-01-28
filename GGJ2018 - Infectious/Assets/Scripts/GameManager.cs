@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [Header("In Game Stuff")]
-    public Text timerText;
+    public Text uiText;
     public int goal;
     public int score;
 
@@ -26,10 +26,16 @@ public class GameManager : MonoBehaviour {
     public bool gameOver = false;
     [HideInInspector]
     public bool win = false;
+
+
+    public int infected = 0;
+    public int possibleInfected = 0;
+    public static GameManager instance;
 	
     // Use this for initialization
 	void Start ()
     {
+        instance = this;
         Time.timeScale = 1;
 	}
 	
@@ -37,13 +43,28 @@ public class GameManager : MonoBehaviour {
 	void Update ()
     {
         curTime += Time.deltaTime;
+        if(infected == possibleInfected)
+        {
+            win = true;
+
+        }
+
+        if(win)
+        {
+            uiText.gameObject.SetActive(false);
+            HideMenus();
+            victoryCanvas.SetActive(true);
+            Time.timeScale = Mathf.Clamp01(Time.timeScale - (Time.unscaledDeltaTime / 2));
+            return;
+        }
+
         if (curTime >= timeLimit && !gameOver)
         {
-            print("Do game over stuff!");
-            timerText.gameObject.SetActive(false);
+            uiText.gameObject.SetActive(false);
             HideMenus();
             loseCanvas.SetActive(true);
-            Time.timeScale -= Time.unscaledDeltaTime/2;
+            Time.timeScale = Mathf.Clamp01(Time.timeScale - (Time.unscaledDeltaTime / 2));
+            return;
         }
         if(Input.GetButtonDown("Cancel")&& !gameOver && !win)
         {
@@ -63,12 +84,12 @@ public class GameManager : MonoBehaviour {
 
         if(paused || gameOver || win)
         {
-            timerText.enabled = false;
+            uiText.enabled = false;
         }
         else 
         {
-            timerText.enabled = true;
-            timerText.text = "Time Left: " + (int)(timeLimit - curTime);
+            uiText.enabled = true;
+            uiText.text = "Time Left: " + (int)(timeLimit - curTime) + "\nGoal: " + GameManager.instance.infected + "/" + GameManager.instance.possibleInfected;
         }
 
         

@@ -1,10 +1,10 @@
 Must Do
 =============================
 UI (points, captured people, goal, time)
-Main Menu (start, credits, exit)
-In Game Menu (paused, resume, exit)
-Victory Screen
-Loss screen
+Done - Main Menu (start, credits, exit)
+Done - In Game Menu (paused, resume, exit)
+Done - Victory Screen
+Done - Loss screen
 Art added in
 Player art
 "Person" art (bad guys/targets)

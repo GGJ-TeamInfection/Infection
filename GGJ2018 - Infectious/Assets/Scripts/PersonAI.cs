@@ -9,7 +9,8 @@ public class PersonAI : MonoBehaviour {
         maxWaitTime = 10000,
         looseInfectionRange = 4;
     public Vector2 moveSize = new Vector2(3, 3);
-    public bool infected = false;
+
+    public bool infected = false, wasInfected = false;
 	public float resistance = 3f;
 
     public float curTime = 0,
@@ -22,6 +23,7 @@ public class PersonAI : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        GameManager.instance.possibleInfected += 1;
         rb = GetComponent<Rigidbody2D>();
         targetTime = Random.Range(0, maxWaitTime);
         targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
@@ -49,7 +51,7 @@ public class PersonAI : MonoBehaviour {
             }
         }
         else
-        {
+        { 
             if(Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) > looseInfectionRange)
             {
                 StopInfection();
@@ -65,22 +67,35 @@ public class PersonAI : MonoBehaviour {
     
     public void GetInfected()
     {
-		resistance = (resistance > 0f ? resistance - 1f : 0f);
+        resistance = (resistance > 0f ? resistance - 1f : 0f);
 
-		infected = resistance == 0f;
-		if (infected) {
-			targetPosition = new Vector3 (Random.Range (-moveSize.x, moveSize.x), Random.Range (-moveSize.y, moveSize.y), 0);
-			GetComponent<SpriteRenderer> ().color = Color.red;
-		} else {
-			GetComponent<SpriteRenderer> ().color = Color.yellow;
-		}
+        infected = resistance == 0f;
+        if (infected)
+        {
+            targetPosition = new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        if(!wasInfected && infected)
+        {
+            GameManager.instance.infected += 1;
+            wasInfected = true;
+        }
     }
 
     public void StopInfection()
     {
-        infected = false;
-        targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
-        curTime = 0;
-        targetTime = Random.Range(minWaitTime, maxWaitTime);
+        if (infected)
+        {
+            wasInfected = false;
+            GameManager.instance.infected -= 1;
+            infected = false;
+            targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
+            curTime = 0;
+            targetTime = Random.Range(minWaitTime, maxWaitTime);
+        }
     }
 }
