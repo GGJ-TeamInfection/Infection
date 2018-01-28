@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour {
 	public GameObject mainMenu;
+	public GameObject aboutPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,17 @@ public class MainMenuManager : MonoBehaviour {
 	}
 
 	public void resetMenus() {
-//		mainMenu.SetActive (false);
+		mainMenu.SetActive (false);
+		aboutPanel.SetActive (false);
+	}
+
+	public void showAboutPanel() {
+		resetMenus ();
+		aboutPanel.SetActive (true);
+	}
+
+	public void showMainMenu() {
+		resetMenus ();
+		mainMenu.SetActive (true);
 	}
 }
