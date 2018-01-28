@@ -35,4 +35,9 @@ public class MainMenuManager : MonoBehaviour {
 		resetMenus ();
 		mainMenu.SetActive (true);
 	}
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

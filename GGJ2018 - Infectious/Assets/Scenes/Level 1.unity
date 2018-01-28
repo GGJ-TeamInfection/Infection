@@ -11279,9 +11279,30 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114356587668826116, guid: 8e87712cb51eff5479a8ffdbff353231,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 941852083}
+    - target: {fileID: 114356587668826116, guid: 8e87712cb51eff5479a8ffdbff353231,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356587668826116, guid: 8e87712cb51eff5479a8ffdbff353231,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e87712cb51eff5479a8ffdbff353231, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &941852083 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114387455914832404, guid: 8e87712cb51eff5479a8ffdbff353231,
+    type: 2}
+  m_PrefabInternal: {fileID: 941852082}
+  m_Script: {fileID: 11500000, guid: d98f91f97784de249bd66e16400796a8, type: 3}
 --- !u!1 &947241591
 GameObject:
   m_ObjectHideFlags: 0
