@@ -15,7 +15,6 @@ public class InfectPerson : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Fire1"))
         {
-            print("Clicked");
             foreach(GameObject target in objectsInRange)
             {
                 Infect(target);
