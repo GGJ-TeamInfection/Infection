@@ -18,13 +18,18 @@ public class PersonAI : MonoBehaviour {
 
     public Vector3 targetPosition;
 
+    public Color damagedButNotInfectedColor = Color.yellow;
+    public Color infectedColor = Color.red;
+
     Rigidbody2D rb;
+    Animator anim;
 
 	// Use this for initialization
 	void Start ()
     {
         GameManager.instance.possibleInfected += 1;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         targetTime = Random.Range(0, maxWaitTime);
         targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
     }
@@ -40,14 +45,16 @@ public class PersonAI : MonoBehaviour {
                 curTime = 0;
                 targetTime = Random.Range(minWaitTime, maxWaitTime);
             }
-            if (Vector3.Distance(transform.position, targetPosition) < .1f)
+            if (Vector3.Distance(transform.position, targetPosition) < .2f)
             {
                 rb.velocity = Vector3.zero;
                 curTime += Time.deltaTime;
+                anim.SetBool("isWalking", false);
             }
             else
             {
                 rb.velocity = (targetPosition - transform.position).normalized * movementSpeed;
+                anim.SetBool("isWalking", true);
             }
         }
         else
@@ -60,9 +67,17 @@ public class PersonAI : MonoBehaviour {
             if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position + targetPosition) < .3f)
             {
                 targetPosition = new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
+                anim.SetBool("isWalking", false);
+            }
+            else
+            {
+                anim.SetBool("isWalking", true);
             }
             rb.velocity = ((PlayerMovement.instance.transform.position + targetPosition) - transform.position).normalized * infectedSpeed;
         }
+        anim.SetBool("isInfected", infected);
+        //To fix sort order. Mess with later.
+       // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 	}
     
     public void GetInfected()
@@ -73,11 +88,11 @@ public class PersonAI : MonoBehaviour {
         if (infected)
         {
             targetPosition = new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
-            GetComponent<SpriteRenderer>().color = Color.red;
+            GetComponentInChildren<SpriteRenderer>().color = infectedColor;
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            GetComponentInChildren<SpriteRenderer>().color = damagedButNotInfectedColor;
         }
         if(!wasInfected && infected)
         {
@@ -96,6 +111,7 @@ public class PersonAI : MonoBehaviour {
             targetPosition = transform.position + new Vector3(Random.Range(-moveSize.x, moveSize.x), Random.Range(-moveSize.y, moveSize.y), 0);
             curTime = 0;
             targetTime = Random.Range(minWaitTime, maxWaitTime);
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
     }
 }
