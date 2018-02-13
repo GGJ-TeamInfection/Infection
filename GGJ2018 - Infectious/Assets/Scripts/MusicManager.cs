@@ -25,7 +25,7 @@ public class MusicManager : MonoBehaviour {
 		if(!hasWon && !hasLost && GameManager.instance.win)
         {
             hasWon = true;
-            aSource.clip = victorySounds[Random.Range((int)0,(int)victorySounds.Length)-1];
+            aSource.clip = victorySounds[Random.Range((int)0,(int)victorySounds.Length-1)];
             aSource.Stop();
             aSource.Play();
         }
