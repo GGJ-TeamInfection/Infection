@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        if (curTime >= timeLimit && !gameOver)
+        if (curTime >= timeLimit)
         {
+            gameOver = true;
             uiText.gameObject.SetActive(false);
             HideMenus();
             loseCanvas.SetActive(true);

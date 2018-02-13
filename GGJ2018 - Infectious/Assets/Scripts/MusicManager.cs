@@ -22,17 +22,18 @@ public class MusicManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(!hasWon && GameManager.instance.win)
+		if(!hasWon && !hasLost && GameManager.instance.win)
         {
             hasWon = true;
-            aSource.clip = victorySounds[Random.Range((int)0,(int)victorySounds.Length)];
+            aSource.clip = victorySounds[Random.Range((int)0,(int)victorySounds.Length)-1];
             aSource.Stop();
             aSource.Play();
         }
-        else if (!hasWon && GameManager.instance.gameOver)
+        else if (!hasWon && !hasLost && GameManager.instance.gameOver)
         {
             hasLost = true;
-            aSource.clip = lossSounds[Random.Range((int)0, (int)lossSounds.Length)];
+            print(lossSounds.Length);
+            aSource.clip = lossSounds[Random.Range((int)0, (int)lossSounds.Length-1)];
             aSource.Stop();
             aSource.Play();
         }
@@ -40,7 +41,7 @@ public class MusicManager : MonoBehaviour {
         {
             if(!aSource.isPlaying && !hasLost && !hasWon)
             {
-                aSource.clip = songs[Random.Range((int)0, (int)songs.Length)];
+                aSource.clip = songs[Random.Range((int)0, (int)songs.Length-1)];
                 aSource.Stop();
                 aSource.Play();
             }

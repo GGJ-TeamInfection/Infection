@@ -10675,14 +10675,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victorySounds:
   - {fileID: 8300000, guid: 15f547b84476c4e4ca25b863981df531, type: 3}
-  - {fileID: 8300000, guid: 3510b513eb298da47bd5db2a7851b4e5, type: 3}
   lossSounds:
   - {fileID: 8300000, guid: 48542dc9a12e4f040ab22d4f7b1d418e, type: 3}
-  - {fileID: 8300000, guid: 12ed569b641897a40a441b160489b0fe, type: 3}
   songs:
-  - {fileID: 8300000, guid: e3d3c224873b609479c214110375f0cd, type: 3}
-  - {fileID: 8300000, guid: ae453245fc9569442aa5f7aec3dd0d7d, type: 3}
-  - {fileID: 8300000, guid: 9e87f74adb2deda4484ea9642ec8e255, type: 3}
+  - {fileID: 8300000, guid: ed3414b52cda8594394f2158aeab8cc1, type: 3}
 --- !u!1 &892409683
 GameObject:
   m_ObjectHideFlags: 0
@@ -11273,7 +11269,7 @@ Prefab:
     - target: {fileID: 114387455914832404, guid: 8e87712cb51eff5479a8ffdbff353231,
         type: 2}
       propertyPath: timeLimit
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1743630159195046, guid: 8e87712cb51eff5479a8ffdbff353231, type: 2}
       propertyPath: m_IsActive
