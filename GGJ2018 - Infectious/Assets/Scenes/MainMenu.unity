@@ -504,7 +504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &101066589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 101066588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 434, y: 325.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716796988}
@@ -899,7 +899,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 321298865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 434, y: -325.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1762813559}
@@ -1727,7 +1727,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<size=30>Kill ''Em With Kindness</size>
+  m_Text: '<size=30>Little Miss Shepherd</size>
+
 
     Global Game Jam 2018
 
@@ -5420,7 +5421,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1762813558}
   m_LocalRotation: {x: -0, y: -0.050018422, z: -0, w: 0.9987483}
-  m_LocalPosition: {x: -0.3001709, y: 0, z: 5.994658}
+  m_LocalPosition: {x: -108.80017, y: 32.550003, z: 5.994658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 321298866}
